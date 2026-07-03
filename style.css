@@ -1,0 +1,604 @@
+/* ==========================
+   GLOBAL STYLES
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#111;
+    color:#fff;
+    line-height:1.6;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+    background:rgba(10,15,25,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #333;
+}
+
+.logo img{
+    height:70px;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#1e4f8c;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#1e4f8c;
+}
+
+.nav-links a.active{
+    color:#1e4f8c;
+}
+
+.language-switch button{
+    padding:8px 12px;
+    margin-left:5px;
+    border:none;
+    cursor:pointer;
+    background:#444;
+    color:#fff;
+    border-radius:4px;
+    transition:0.3s;
+}
+
+.language-switch button:hover{
+    background:#777;
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero{
+    height:100vh;
+    background:url('../images/hero/hero-background.jpg') center center/cover no-repeat;
+    position:relative;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(8,15,30,0.75);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero-content{
+    max-width:900px;
+    padding:20px;
+}
+
+.hero-logo{
+    width:220px;
+    margin:0 auto 25px;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+.hero h2{
+    font-size:2rem;
+    color:#1e4f8c;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.btn{
+    padding:14px 28px;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.primary-btn{
+    background:#1e4f8c;
+    color:#fff;
+}
+
+.primary-btn:hover{
+    background:#2d6bc0;
+}
+
+.secondary-btn{
+    background:#555;
+    color:#fff;
+}
+
+.secondary-btn:hover{
+    background:#777;
+}
+
+.whatsapp-btn{
+    background:#25D366;
+    color:#fff;
+}
+
+.whatsapp-btn:hover{
+    background:#1db954;
+}
+
+/* ==========================
+   SECTION DEFAULTS
+========================== */
+
+section{
+    padding:100px 0;
+}
+
+section h2{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:2.5rem;
+    position:relative;
+}
+
+section h2::after{
+    content:'';
+    display:block;
+    width:80px;
+    height:4px;
+    background:#1e4f8c;
+    margin:10px auto;
+}
+
+/* ==========================
+   ABOUT SECTION
+========================== */
+
+.about{
+    background:#1a1a1a;
+}
+
+.about p{
+    text-align:center;
+    max-width:900px;
+    margin:0 auto 50px;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.about-card{
+    background:#222;
+    padding:30px;
+    text-align:center;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.about-card:hover{
+    transform:translateY(-8px);
+}
+
+.about-card i{
+    font-size:2rem;
+    color:#1e4f8c;
+    margin-bottom:15px;
+}
+
+/* ==========================
+   SERVICES
+========================== */
+
+.services{
+    background:#111;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.service-card{
+    background:#1f1f1f;
+    padding:30px;
+    text-align:center;
+    border-radius:10px;
+    transition:0.3s;
+    border:1px solid #333;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    border-color:#1e4f8c;
+}
+
+.service-card i{
+    font-size:2.5rem;
+    color:#1e4f8c;
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    margin-bottom:15px;
+}
+
+/* ==========================
+   PROJECT GALLERY
+========================== */
+
+.projects{
+    background:#1a1a1a;
+}
+
+.project-card{
+
+    background:#222;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:25px;
+    margin-bottom:60px;
+
+}
+
+.project-card h3{
+
+    color:#1e4f8c;
+    margin-bottom:15px;
+
+}
+
+.project-card p{
+
+    margin-bottom:15px;
+
+}
+
+.project-card img{
+
+    width:100%;
+    max-width:900px;
+    height:auto;
+    border-radius:10px;
+    margin-top:20px;
+
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* ==========================
+   TESTIMONIALS
+========================== */
+
+.reviews{
+    background:#111;
+}
+
+.testimonial{
+    background:#222;
+    padding:30px;
+    margin-bottom:25px;
+    border-left:5px solid #1e4f8c;
+    border-radius:5px;
+}
+
+.testimonial p{
+    margin-bottom:15px;
+    font-style:italic;
+}
+
+.testimonial h4{
+    color:#1e4f8c;
+}
+
+/* ===================== */
+/* GOOGLE REVIEWS CTA */
+/* ===================== */
+
+.review-section{
+
+    padding:80px 20px;
+    text-align:center;
+    background:#1a1a1a;
+
+}
+
+.review-section h2{
+
+    color:#1e4f8c;
+    margin-bottom:20px;
+
+}
+
+.review-section p{
+
+    color:#ddd;
+    max-width:700px;
+    margin:0 auto 25px;
+
+}
+
+.review-qr{
+
+    margin-top:40px;
+
+}
+
+.review-qr img{
+
+    width:220px;
+    max-width:100%;
+    background:#fff;
+    padding:10px;
+    border-radius:10px;
+
+}
+
+.review-qr p{
+
+    margin-top:15px;
+
+}
+
+/* ==========================
+   CONTACT
+========================== */
+
+.contact-info a{
+    color:#fff;
+    text-decoration:none;
+}
+
+.contact-info a:hover{
+    color:#1e4f8c;
+}
+
+.contact{
+    background:#1a1a1a;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+.contact-info h3{
+    margin-bottom:20px;
+}
+
+.contact-info p{
+    margin-bottom:15px;
+}
+
+.contact-info i{
+    color:#1e4f8c;
+    margin-right:10px;
+}
+
+.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:15px;
+    border:none;
+    background:#222;
+    color:#fff;
+    border-radius:5px;
+}
+
+.contact-form button{
+    background:#1e4f8c;
+    color:#fff;
+    border:none;
+    padding:15px;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.contact-form button:hover{
+    background:#2d6bc0;
+}
+
+/* ==========================
+   MAP
+========================== */
+
+.map-section iframe{
+    width:100%;
+    height:450px;
+    border:none;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer{
+    background:#0a0a0a;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.footer-content img{
+    width:140px;
+    margin:0 auto 20px;
+}
+
+.social-links{
+    margin-bottom:20px;
+}
+
+.social-links a{
+    color:#fff;
+    font-size:1.8rem;
+    margin:0 10px;
+    transition:0.3s;
+}
+
+.social-links a:hover{
+    color:#1e4f8c;
+}
+
+/* ==========================
+   WHATSAPP FLOATING BUTTON
+========================== */
+
+.floating-whatsapp{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#25D366;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    text-decoration:none;
+    z-index:999;
+    box-shadow:0 4px 15px rgba(0,0,0,0.4);
+}
+
+.floating-whatsapp:hover{
+    transform:scale(1.1);
+}
+
+/* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero h2{
+        font-size:1.4rem;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    section h2{
+        font-size:2rem;
+    }
+
+}
