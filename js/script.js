@@ -375,14 +375,28 @@ function closeGallery(){
 
 function loadImage(){
 
-    galleryTitle.textContent = projectTitles[currentProject];
+    galleryImage.classList.add("fade");
 
-    galleryImage.src = imagePath(currentProject,currentImage);
+    setTimeout(function(){
 
-    galleryCounter.textContent =
-        `Image ${currentImage} of ${projectImageCounts[currentProject]}`;
+        galleryTitle.textContent = projectTitles[currentProject];
 
-    buildThumbnails();
+        galleryImage.src = imagePath(currentProject,currentImage);
+
+        galleryCounter.textContent =
+            `Image ${currentImage} of ${projectImageCounts[currentProject]}`;
+
+        buildThumbnails();
+
+    },150);
+
+}
+
+galleryImage.onload = function(){
+
+    galleryImage.classList.remove("fade");
+
+};
 
 }
 
