@@ -813,6 +813,15 @@ footer{
 
         object-fit:contain;
 
+	opacity:1;
+	transition:opacity .25s ease;
+
+    }
+
+    #galleryImage.fade{
+
+	opacity:0;
+
     }
 
     #galleryThumbnails{

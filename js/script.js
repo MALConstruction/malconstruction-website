@@ -375,14 +375,24 @@ function closeGallery(){
 
 function loadImage(){
 
-    galleryTitle.textContent = projectTitles[currentProject];
+    const img = document.getElementById("galleryImage");
 
-    galleryImage.src = imagePath(currentProject,currentImage);
+    img.classList.add("fade");
 
-    galleryCounter.textContent =
-        `Image ${currentImage} of ${projectImageCounts[currentProject]}`;
+    setTimeout(function(){
 
-    buildThumbnails();
+        img.src = `images/projects/project${String(currentProject).padStart(2,'0')}/${currentImage}.jpg`;
+
+        img.onload = function(){
+
+            img.classList.remove("fade");
+
+        };
+
+    updateCounter();
+    updateThumbnails();
+
+    },150);
 
 }
 
@@ -511,4 +521,29 @@ document.onkeydown = function(e){
 
     }
 
-};
+let touchStartX = 0;
+let touchEndX = 0;
+
+gallery.addEventListener("touchstart", e=>{
+
+    touchStartX = e.changedTouches[0].screenX;
+
+});
+
+gallery.addEventListener("touchend", e=>{
+
+    touchEndX = e.changedTouches[0].screenX;
+
+    if(touchEndX < touchStartX-50){
+
+        btnNext.click();
+
+    }
+
+    if(touchEndX > touchStartX+50){
+
+        btnPrev.click();
+
+    }
+
+});
