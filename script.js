@@ -292,3 +292,223 @@ document.head.appendChild(style);
 console.log(
     "M.A.L Construction Website Loaded Successfully"
 );
+
+/* ==========================================================
+   PROJECT GALLERY
+========================================================== */
+
+const projectImageCounts = {
+
+    "01":5,
+    "02":35,
+    "03":5,
+    "04":19,
+    "05":19,
+    "06":41,
+    "07":19,
+    "08":9,
+    "09":10,
+    "10":7,
+    "11":4,
+    "12":18,
+    "13":42
+
+};
+
+const projectTitles = {
+
+    "01":"Roof Ventilator Installation",
+    "02":"Residential Roof Reconstruction",
+    "03":"ClearVu Pool Fencing",
+    "04":"Water Tank Platform Upgrade",
+    "05":"New Water Tank Platform",
+    "06":"Storage Facility Construction",
+    "07":"Concrete Water Reservoir Construction",
+    "08":"Reservoir Repair & Strengthening",
+    "09":"Concrete Foundation Slab",
+    "10":"Roof Sheeting Replacement",
+    "11":"Residential Plumbing",
+    "12":"Exterior Restoration & Painting",
+    "13":"Residential Interior Remodeling"
+
+};
+
+let currentProject = "";
+let currentImage = 1;
+
+const gallery = document.getElementById("projectGallery");
+const galleryImage = document.getElementById("galleryImage");
+const galleryTitle = document.getElementById("galleryProjectTitle");
+const galleryCounter = document.getElementById("galleryCounter");
+const galleryThumbs = document.getElementById("galleryThumbnails");
+
+function pad(number){
+    return number.toString().padStart(2,"0");
+}
+
+function imagePath(project,image){
+
+    return `images/projects/project${project}${pad(image)}.jpg`;
+
+}
+
+function openGallery(project){
+
+    currentProject = project;
+    currentImage = 1;
+
+    gallery.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+    loadImage();
+
+}
+
+function closeGallery(){
+
+    gallery.classList.remove("active");
+
+    document.body.style.overflow = "auto";
+
+}
+
+function loadImage(){
+
+    galleryTitle.textContent = projectTitles[currentProject];
+
+    galleryImage.src = imagePath(currentProject,currentImage);
+
+    galleryCounter.textContent =
+        `Image ${currentImage} of ${projectImageCounts[currentProject]}`;
+
+    buildThumbnails();
+
+}
+
+function buildThumbnails(){
+
+    galleryThumbs.innerHTML = "";
+
+    for(let i=1;i<=projectImageCounts[currentProject];i++){
+
+        const thumb=document.createElement("img");
+
+        thumb.src=imagePath(currentProject,i);
+
+        if(i===currentImage){
+
+            thumb.classList.add("active");
+
+        }
+
+        thumb.addEventListener("click",()=>{
+
+            currentImage=i;
+
+            loadImage();
+
+        });
+
+        galleryThumbs.appendChild(thumb);
+
+    }
+
+}
+
+/* ==========================================================
+   CONNECT PROJECT IMAGES
+========================================================== */
+
+document.querySelectorAll(".project-card img").forEach(img=>{
+
+    img.addEventListener("click",()=>{
+
+        const src=img.getAttribute("src");
+
+        const match=src.match(/project(\d{2})01/i);
+
+        if(!match) return;
+
+        openGallery(match[1]);
+
+    });
+
+});
+
+
+/* ==========================================================
+   NEXT / PREVIOUS
+========================================================== */
+
+const btnNext = document.querySelector(".gallery-next");
+const btnPrev = document.querySelector(".gallery-prev");
+const btnClose = document.querySelector(".gallery-close");
+
+btnNext.onclick = function(){
+
+    currentImage++;
+
+    if(currentImage > projectImageCounts[currentProject]){
+
+        currentImage = 1;
+
+    }
+
+    loadImage();
+
+};
+
+btnPrev.onclick = function(){
+
+    currentImage--;
+
+    if(currentImage < 1){
+
+        currentImage = projectImageCounts[currentProject];
+
+    }
+
+    loadImage();
+
+};
+
+btnClose.onclick = function(){
+
+    closeGallery();
+
+};
+
+gallery.onclick = function(e){
+
+    if(e.target === gallery){
+
+        closeGallery();
+
+    }
+
+};
+
+document.onkeydown = function(e){
+
+    if(!gallery.classList.contains("active")) return;
+
+    if(e.key === "Escape"){
+
+        closeGallery();
+
+    }
+
+    if(e.key === "ArrowRight"){
+
+        btnNext.click();
+
+    }
+
+    if(e.key === "ArrowLeft"){
+
+        btnPrev.click();
+
+    }
+
+};
