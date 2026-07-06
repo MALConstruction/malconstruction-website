@@ -375,28 +375,23 @@ function closeGallery(){
 
 function loadImage(){
 
-    galleryImage.classList.add("fade");
+    galleryTitle.textContent = projectTitles[currentProject];
 
-    setTimeout(function(){
+    galleryImage.src = imagePath(currentProject,currentImage);
 
-        galleryTitle.textContent = projectTitles[currentProject];
+    const preload = new Image();
 
-        galleryImage.src = imagePath(currentProject,currentImage);
+    preload.src = imagePath(
+        currentProject,
+        currentImage === projectImageCounts[currentProject]
+            ? 1
+            : currentImage + 1
+);
 
-        galleryCounter.textContent =
-            `Image ${currentImage} of ${projectImageCounts[currentProject]}`;
+    galleryCounter.textContent =
+        `Image ${currentImage} of ${projectImageCounts[currentProject]}`;
 
-        buildThumbnails();
-
-    },150);
-
-}
-
-galleryImage.onload = function(){
-
-    galleryImage.classList.remove("fade");
-
-};
+    buildThumbnails();
 
 }
 
@@ -526,3 +521,34 @@ document.onkeydown = function(e){
     }
 
 };
+
+/* ==========================================================
+   MOBILE SWIPE
+========================================================== */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+gallery.addEventListener("touchstart", function(e){
+
+    touchStartX = e.changedTouches[0].screenX;
+
+});
+
+gallery.addEventListener("touchend", function(e){
+
+    touchEndX = e.changedTouches[0].screenX;
+
+    if(touchEndX < touchStartX - 50){
+
+        btnNext.click();
+
+    }
+
+    if(touchEndX > touchStartX + 50){
+
+        btnPrev.click();
+
+    }
+
+});
